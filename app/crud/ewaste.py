@@ -1,41 +1,13 @@
 from sqlalchemy.orm import Session
 
-from app.models.ewaste import Establishment, TrashType, Disposal, Punctuation
+from app.models.ewaste import TrashType, Disposal, Punctuation
 
 
 from app.schemas.ewaste import (
-    EstablishmentCreate,
     TrashTypeCreate,
     DisposalCreate,
     PunctuationCreate,
 )
-
-
-def get_establishment(db: Session, establishment_id: int):
-    """
-    Obtém um estabelecimento pelo seu id.
-    """
-    return db.query(Establishment).filter(Establishment.id == establishment_id).first()
-
-
-def get_establishments(db: Session, skip: int = 0, limit: int = 100):
-    """
-    Obtém uma lista de estabelecimentos.
-    O parâmetro 'skip' pula um número de linhas, 'limit' limita o número total de linhas retornadas.
-    """
-    return db.query(Establishment).offset(skip).limit(limit).all()
-
-
-def create_establishment(db: Session, establishment: EstablishmentCreate):
-    """
-    Cria um novo estabelecimento.
-    """
-    db_establishment = Establishment(**establishment.dict())
-    db.add(db_establishment)
-    db.commit()
-    db.refresh(db_establishment)
-
-    return db_establishment
 
 
 def get_trashtype(db: Session, trashtype_id: int):

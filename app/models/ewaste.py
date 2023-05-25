@@ -2,30 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from app.database import Base
 
-from app.models.user import User
-
-
-class Establishment(Base):
-    """
-    Modelo da tabela Establishment no banco de dados. Representa um estabelecimento onde o lixo é descartado.
-
-    Campos:
-    - id: Um identificador único para o estabelecimento.
-    - name: O nome do estabelecimento.
-    - locale: A localização do estabelecimento.
-    - disposals: Uma lista de descartes associados a este estabelecimento.
-    """
-
-    __tablename__ = "establishments"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    locale = Column(String)
-    disposals = relationship("Disposal", back_populates="establishment")
-
-    def __repr__(self):
-        return f"{self.name} | {self.id}"
-
 
 class TrashType(Base):
     """
@@ -66,7 +42,9 @@ class Disposal(Base):
     id = Column(Integer, primary_key=True)
     quantity = Column(Integer)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", back_populates="disposals") #TODO: Conferir se é só importar User
+    user = relationship(
+        "User", back_populates="disposals"
+    )  # TODO: Conferir se é só importar User
     establishment_id = Column(Integer, ForeignKey("establishments.id"))
     establishment = relationship("Establishment", back_populates="disposals")
     trash_type_id = Column(Integer, ForeignKey("trashtypes.id"))

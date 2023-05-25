@@ -2,37 +2,7 @@ from typing import Optional, List
 from pydantic import BaseModel
 
 from app.schemas.user import User
-
-
-# ----- Establishment Schemas -----
-
-
-class EstablishmentBase(BaseModel):
-    """
-    Classe base para estabelecimento, incluindo atributos comuns para criação e leitura.
-    """
-
-    name: str
-    locale: str
-
-
-class EstablishmentCreate(EstablishmentBase):
-    """
-    Schema para criação de estabelecimento. Herda de EstablishmentBase.
-    """
-
-    pass
-
-
-class Establishment(EstablishmentBase):
-    """
-    Schema para leitura de estabelecimento. Herda de EstablishmentBase e inclui o id do estabelecimento.
-    """
-
-    id: int
-
-    class Config:
-        orm_mode = True
+from app.schemas.establishment import Establishment
 
 
 # ----- TrashType Schemas -----

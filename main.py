@@ -1,8 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app.database import Base, engine, SessionLocal
-from app.models.ewaste import TrashType
+from app.database import Base, engine
 from app.api.routes import api_router
 
 
