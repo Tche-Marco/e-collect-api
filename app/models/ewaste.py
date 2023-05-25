@@ -1,53 +1,8 @@
-from datetime import datetime
-
-from sqlalchemy.dialects.postgresql import ENUM
-
-from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Column, Enum, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from app.database import Base
 
-
-class User(Base):
-    """
-    Modelo da tabela User no banco de dados. Representa um usuário no sistema.
-
-    Campos:
-    - id: Um identificador único para o usuário.
-    - name: O nome do usuário.
-    - cpf: O CPF do usuário. Deve ser único.
-    - email: O endereço de e-mail do usuário. Deve ser único.
-    - password_hash: O hash da senha do usuário, que é armazenado em vez da senha em texto simples.
-    - disposals: Uma lista de disposals associados a este usuário.
-    - created_at: A data e hora em que o usuário foi criado.
-    - role: O papel do usuário no sistema. Pode ser "user", "establishment" ou "admin".
-
-    Métodos:
-    - set_password: Gera um hash para uma senha e armazena o hash.
-    - check_password: Verifica se uma senha corresponde ao hash armazenado.
-    """
-
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    cpf = Column(String, unique=True)
-    email = Column(String, unique=True)
-    password_hash = Column(String)
-    disposals = relationship("Disposal", back_populates="user")
-    created_at = Column(DateTime, default=datetime.utcnow)
-    role = Column(Enum("user", "establishment", "admin", name="user_role"))
-
-    def __repr__(self):
-        return f"{self.name} | {self.role} | {self.id})"
-
-    def set_password(self, password):
-        """Método para definir a senha (criptografada)"""
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        """Método para verificar a senha"""
-        return check_password_hash(self.password_hash, password)
+from app.models.user import User
 
 
 class Establishment(Base):
@@ -111,7 +66,7 @@ class Disposal(Base):
     id = Column(Integer, primary_key=True)
     quantity = Column(Integer)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", back_populates="disposals")
+    user = relationship("User", back_populates="disposals") #TODO: Conferir se é só importar User
     establishment_id = Column(Integer, ForeignKey("establishments.id"))
     establishment = relationship("Establishment", back_populates="disposals")
     trash_type_id = Column(Integer, ForeignKey("trashtypes.id"))

@@ -1,48 +1,7 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
-
-# ----- User Schemas -----
-
-
-class UserBase(BaseModel):
-    """
-    Classe base para o usuário, incluindo atributos comuns para criação e leitura.
-    """
-
-    name: str
-    cpf: str
-    email: str
-    role: str
-
-
-class UserCreate(UserBase):
-    """
-    Schema para criação de usuário. Herda de UserBase e inclui senha.
-    """
-
-    password: str
-
-
-class UserUpdate(UserBase):
-    """
-    Schema para atualização de usuário. Herda de UserBase e inclui senha opcional.
-    Se a senha não for fornecida, o usuário será atualizado com a senha atual.
-    """
-
-    password: Optional[str] = None
-
-
-class User(UserBase):
-    """
-    Schema para leitura de usuário. Herda de UserBase e inclui o id do usuário.
-    """
-
-    id: int
-    # disposals: List["Disposal"] = []
-
-    class Config:
-        orm_mode = True
+from app.schemas.user import User
 
 
 # ----- Establishment Schemas -----
