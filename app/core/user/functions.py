@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-import app.models.user as models
-from app.schemas.user import (
+import app.core.user.models as models
+from app.core.user.schema import (
     UserCreate,
     UserUpdate,
     User,

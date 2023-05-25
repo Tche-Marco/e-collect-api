@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-import app.models.disposal as models
-from app.schemas.disposal import (
+import app.core.disposal.model as models
+from app.core.disposal.schema import (
     DisposalCreate,
     DisposalUpdate,
     Disposal,

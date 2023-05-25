@@ -2,14 +2,13 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
-from app.database import get_db
-
-from app.schemas.establishment import (
+from app.core.database import get_db
+from app.core.establishment.schema import (
     Establishment,
     EstablishmentCreate,
     EstablishmentUpdate,
 )
-from app.crud.establishment import (
+from app.core.establishment.functions import (
     get_establishment,
     get_establishments,
     create_establishment,
