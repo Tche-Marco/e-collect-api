@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-import app.core.trash_type.model as models
-from app.core.trash_type.schema import (
+import app.trash_type.model as models
+from app.trash_type.schema import (
     TrashTypeCreate,
     TrashTypeUpdate,
     TrashType,

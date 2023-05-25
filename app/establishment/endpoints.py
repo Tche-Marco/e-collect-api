@@ -3,12 +3,12 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
 from app.core.database import get_db
-from app.core.establishment.schema import (
+from app.establishment.schema import (
     Establishment,
     EstablishmentCreate,
     EstablishmentUpdate,
 )
-from app.core.establishment.functions import (
+from app.establishment.functions import (
     get_establishment,
     get_establishments,
     create_establishment,

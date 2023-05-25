@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-import app.core.establishment.model as models
-from app.core.establishment.schema import (
+import app.establishment.model as models
+from app.establishment.schema import (
     EstablishmentCreate,
     EstablishmentUpdate,
     Establishment,

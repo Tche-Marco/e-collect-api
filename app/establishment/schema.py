@@ -1,8 +1,8 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
-from app.core.disposal.schema import Disposal
-from app.core.offer.schema import Offer
+from app.disposal.schema import Disposal
+from app.offer.schema import Offer
 
 
 class EstablishmentBase(BaseModel):

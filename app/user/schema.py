@@ -1,7 +1,7 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
-from app.core.disposal.schema import Disposal
+from app.disposal.schema import Disposal
 
 
 class UserBase(BaseModel):

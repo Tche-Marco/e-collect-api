@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-import app.core.offer.model as models
-from app.core.offer.schema import (
+import app.offer.model as models
+from app.offer.schema import (
     OfferCreate,
     OfferUpdate,
     Offer,
