@@ -1,6 +1,9 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
+from app.schemas.disposal import Disposal
+from app.schemas.offer import Offer
+
 
 class EstablishmentBase(BaseModel):
     """
@@ -43,8 +46,8 @@ class Establishment(EstablishmentBase):
     """
 
     id: int
-    disposals: List[int] = []
-    offers: List[int] = []
+    disposals: List[Disposal] = []
+    offers: List[Offer] = []
 
     class Config:
         orm_mode = True
