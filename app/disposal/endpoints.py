@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
 from app.core.database import get_db
-from app.core.disposal.schema import Disposal, DisposalCreate, DisposalUpdate
-from app.core.disposal.functions import (
+from app.disposal.schema import Disposal, DisposalCreate, DisposalUpdate
+from app.disposal.functions import (
     get_disposal,
     get_disposals,
     create_disposal,

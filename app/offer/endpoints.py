@@ -2,9 +2,9 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
-from app.core.offer.schema import Offer, OfferCreate, OfferUpdate
+from app.offer.schema import Offer, OfferCreate, OfferUpdate
 from app.core.database import get_db
-from app.core.offer.functions import (
+from app.offer.functions import (
     get_offer,
     get_offers,
     create_offer,

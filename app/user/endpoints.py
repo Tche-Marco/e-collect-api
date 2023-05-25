@@ -2,9 +2,9 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
-from app.core.user.schema import User, UserCreate, UserUpdate
+from app.user.schema import User, UserCreate, UserUpdate
 from app.core.database import get_db
-from app.core.user.functions import (
+from app.user.functions import (
     get_user,
     get_users,
     create_user,

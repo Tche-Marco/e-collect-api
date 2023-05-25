@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
 from app.core.database import get_db
-from app.core.trash_type.schema import TrashType, TrashTypeCreate, TrashTypeUpdate
-from app.core.trash_type.functions import (
+from app.trash_type.schema import TrashType, TrashTypeCreate, TrashTypeUpdate
+from app.trash_type.functions import (
     get_trash_type,
     get_trash_types,
     create_trash_type,
