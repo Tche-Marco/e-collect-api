@@ -15,6 +15,7 @@ class DisposalCreate(DisposalBase):
     Schema para criação de descarte. Herda de DisposalBase e inclui o id do tipo de lixo e do usuário.
     """
 
+    establishment_id: int
     trash_type_id: int
     user_id: int
 
@@ -25,6 +26,7 @@ class DisposalUpdate(DisposalBase):
     """
 
     amount: Optional[float] = None
+    establishment_id: Optional[int] = None
     trash_type_id: Optional[int] = None
     user_id: Optional[int] = None
 
@@ -35,6 +37,7 @@ class Disposal(DisposalBase):
     """
 
     id: int
+    establishment_id: int
     trash_type_id: int
     user_id: int
 
