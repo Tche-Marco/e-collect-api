@@ -15,6 +15,9 @@ db_name = os.getenv("DB_NAME")
 # Constrói a URL de conexão com o banco de dados
 db_url = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
 
+# conectando ao banco de dados local TODO: remover quando for para produção
+db_url = "sqlite:///./e_collect.db"
+
 # Cria a engine do SQLAlchemy
 engine = create_engine(db_url)
 
