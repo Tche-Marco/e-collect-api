@@ -1,6 +1,8 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
+from app.schemas.disposal import Disposal
+
 
 class UserBase(BaseModel):
     """
@@ -33,7 +35,7 @@ class User(UserBase):
     """
 
     id: int
-    disposals: List[int] = []
+    disposals: List[Disposal] = []
 
     class Config:
         orm_mode = True
