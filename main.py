@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from app.database import Base, engine
 from app.api.routes import api_router
+from app.core.user.endpoints import router as user_router
 
 
 app = FastAPI()
@@ -19,6 +20,7 @@ def startup():
 app.add_event_handler("startup", startup)
 
 app.include_router(api_router, prefix="")
+app.include_router(user_router, prefix="/users")
 
 
 if __name__ == "__main__":

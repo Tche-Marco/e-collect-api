@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 
 from app.api.endpoints import (
-    users,
     establishments,
     trash_types,
     disposals,
@@ -11,11 +10,6 @@ from app.api.endpoints import (
 
 api_router = APIRouter()
 
-api_router.include_router(
-    users.router,
-    prefix="/users",
-    tags=["users"],
-)
 api_router.include_router(
     establishments.router,
     prefix="/establishments",
