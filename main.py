@@ -1,12 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app.database import Base, engine
-from app.api.routes import api_router
-from app.core.user.endpoints import router as user_router
 from app.core.establishment.endpoints import router as establishment_router
 from app.core.trash_type.endpoints import router as trash_type_router
+from app.core.disposal.endpoints import router as disposals_router
 from app.core.offer.endpoints import router as offers_router
+from app.core.user.endpoints import router as user_router
+from app.core.database import Base, engine
+
 
 app = FastAPI()
 
@@ -21,7 +22,7 @@ def startup():
 
 app.add_event_handler("startup", startup)
 
-app.include_router(api_router, prefix="")
+
 app.include_router(
     user_router,
     prefix="/users",
@@ -32,12 +33,17 @@ app.include_router(
     prefix="/establishments",
     tags=["Estabelecimentos"],
 )
-api_router.include_router(
+app.include_router(
+    disposals_router,
+    prefix="/disposals",
+    tags=["Descartes"],
+)
+app.include_router(
     trash_type_router,
     prefix="/trash_types",
     tags=["Tipos de lixo"],
 )
-api_router.include_router(
+app.include_router(
     offers_router,
     prefix="/offers",
     tags=["Ofertas"],

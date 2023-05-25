@@ -2,10 +2,9 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
 
-from app.database import get_db
-
-from app.schemas.disposal import Disposal, DisposalCreate, DisposalUpdate
-from app.crud.disposal import (
+from app.core.database import get_db
+from app.core.disposal.schema import Disposal, DisposalCreate, DisposalUpdate
+from app.core.disposal.functions import (
     get_disposal,
     get_disposals,
     create_disposal,
