@@ -2,7 +2,11 @@ from typing import Optional, List
 from pydantic import BaseModel
 
 from app.schemas.disposal import Disposal
+
+# from app.core.disposal.schema import Disposal #TODO
 from app.schemas.offer import Offer
+
+# from app.core.offer.schema import Offer #TODO
 
 
 class EstablishmentBase(BaseModel):

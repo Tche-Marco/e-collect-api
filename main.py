@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from app.database import Base, engine
 from app.api.routes import api_router
 from app.core.user.endpoints import router as user_router
+from app.core.establishment.endpoints import router as establishment_router
 
 
 app = FastAPI()
@@ -20,7 +21,16 @@ def startup():
 app.add_event_handler("startup", startup)
 
 app.include_router(api_router, prefix="")
-app.include_router(user_router, prefix="/users")
+app.include_router(
+    user_router,
+    prefix="/users",
+    tags=["Usuários"],
+)
+app.include_router(
+    establishment_router,
+    prefix="/establishments",
+    tags=["Estabelecimentos"],
+)
 
 
 if __name__ == "__main__":
