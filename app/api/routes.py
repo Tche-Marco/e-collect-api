@@ -23,8 +23,8 @@ api_router.include_router(
 )
 api_router.include_router(
     trash_types.router,
-    prefix="/trashtypes",
-    tags=["trashtypes"],
+    prefix="/trash_types",
+    tags=["trash_types"],
 )
 api_router.include_router(
     disposals.router,
