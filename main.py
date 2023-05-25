@@ -6,6 +6,7 @@ from app.api.routes import api_router
 from app.core.user.endpoints import router as user_router
 from app.core.establishment.endpoints import router as establishment_router
 from app.core.trash_type.endpoints import router as trash_type_router
+from app.core.offer.endpoints import router as offers_router
 
 app = FastAPI()
 
@@ -34,7 +35,12 @@ app.include_router(
 api_router.include_router(
     trash_type_router,
     prefix="/trash_types",
-    tags=["trash_types"],
+    tags=["Tipos de lixo"],
+)
+api_router.include_router(
+    offers_router,
+    prefix="/offers",
+    tags=["Ofertas"],
 )
 
 
