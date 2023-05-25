@@ -1,6 +1,12 @@
 from fastapi import APIRouter
 
-from app.api.endpoints import users, establishments, trashtypes, disposals, punctuations
+from app.api.endpoints import (
+    users,
+    establishments,
+    trash_types,
+    disposals,
+    offers,
+)
 
 
 api_router = APIRouter()
@@ -16,7 +22,7 @@ api_router.include_router(
     tags=["establishments"],
 )
 api_router.include_router(
-    trashtypes.router,
+    trash_types.router,
     prefix="/trashtypes",
     tags=["trashtypes"],
 )
@@ -26,7 +32,7 @@ api_router.include_router(
     tags=["disposals"],
 )
 api_router.include_router(
-    punctuations.router,
-    prefix="/punctuations",
-    tags=["punctuations"],
+    offers.router,
+    prefix="/offers",
+    tags=["offers"],
 )
