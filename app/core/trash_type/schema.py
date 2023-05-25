@@ -2,6 +2,8 @@ from typing import Optional, List
 from pydantic import BaseModel
 
 from app.schemas.disposal import Disposal
+# from app.core.disposal.schema import Disposal # TODO 
+
 
 class TrashTypeBase(BaseModel):
     """
